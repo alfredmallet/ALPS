@@ -1,6 +1,6 @@
 Starting ALPS===================================
 Time:
-2026-09-10 -- 20:36:27
+2024-04-03 -- 11:47:14
 ================================================
  ===========================================================
  I                                                         I
@@ -9,14 +9,14 @@ Time:
  I                                                         I
  I                       Version 1.0                       I
  I                                                         I
- I  Kristopher Klein   (kgklein@arizona.edu)               I
+ I  Kristopher Klein   (kgklein@arizone.edu)               I
  I  Daniel Verscharen  (d.verscharen@ucl.ac.uk)            I
  I                                                         I
  ===========================================================
 All processes are up and running.
 Reading from Input File: test_kpar_fast
 GUESS ROUTINE: 
-Intial Guess   1 :    9.9000E-003  -5.5000E-006
+Intial Guess   1 :    9.9000E-004  -5.5000E-010
 SPECIES PARAMETERS: 
 Species   1 : 
  ns/nREF =    1.0000E+000 | qs/qREF =    1.0000E+000 | ms/mREF =    1.0000E+000
@@ -28,39 +28,39 @@ Species   2 :
  Relativistic effects = F
 -=-=-=-=-=-=-=-=-
 Species  1, function  1, Maxwellian fit: 
- Initial fit parameter  1 =     1.7959E-01
- Initial fit parameter  2 =     1.0000E+00
- Initial fit parameter  3 =     0.0000E+00
- Initial fit parameter  4 =     0.0000E+00
- Initial fit parameter  5 =     0.0000E+00
- Perpendicular correction:      1.0000E+00
+ Initial fit parameter  1 =    1.7959E-001
+ Initial fit parameter  2 =    1.0000E+000
+ Initial fit parameter  3 =    0.0000E+000
+ Initial fit parameter  4 =    0.0000E+000
+ Initial fit parameter  5 =    0.0000E+000
+ Perpendicular correction:     1.0000E+000
 Species  2, function  1, Maxwellian fit: 
- Initial fit parameter  1 =     1.4128E+04
- Initial fit parameter  2 =     1.8360E+03
- Initial fit parameter  3 =     0.0000E+00
- Initial fit parameter  4 =     0.0000E+00
- Initial fit parameter  5 =     0.0000E+00
- Perpendicular correction:      1.8360E+03
+ Initial fit parameter  1 =    1.4128E+004
+ Initial fit parameter  2 =    1.8360E+003
+ Initial fit parameter  3 =    0.0000E+000
+ Initial fit parameter  4 =    0.0000E+000
+ Initial fit parameter  5 =    0.0000E+000
+ Perpendicular correction:     1.8360E+003
 -=-=-=-=-=-=-=-=-
-Scan 1: kpar from    1.0000E-002 to    1.0000E-001
+Scan 1: kpar from    1.0000E-003 to    1.0000E-002
 -=-=-=-=-=-=-=-=-
 Attempting to read f0 array from file: test_kpar_fast
 -=-=-=-=-=-=-=-=-
 Calculating df0/dpperp, df0/ppar if necessary...
-Derivatives calculated
+ Derivatives calculated
 -=-=-=-=
 Species   1:
  Integration:                 9.9958E-001
  Charge density:              9.9958E-001
- Parallel current density:    5.8205E-018
+ Parallel current density:    1.8457E-017
 -=-=-=-=
 Species   2:
  Integration:                 9.9958E-001
  Charge density:             -9.9958E-001
- Parallel current density:    6.7357E-016
+ Parallel current density:   -1.7127E-015
 -=-=-=-=
- Total charge density:             -1.6875E-014
- Total parallel current density:    6.7939E-016
+ Total charge density:             -1.7319E-014
+ Total parallel current density:   -1.6942E-015
 -=-=-=-=-=-=-=-=
 -=-=-=-=-=-=-=-=-
 Determine if relativistic calculation necessary
@@ -68,13 +68,13 @@ No relativistic calculation necessary.
 -=-=-=-=-=-=-=-=-
 Determine fit parameters for hybrid analytic continuation...
  Results of the fit for hybrid analytic continuation at iperp = 1:
-  param_fit( 1, 1, 1, 1) =     1.7959E-01
-  param_fit( 1, 1, 2, 1) =     1.0000E+00
-  param_fit( 1, 1, 3, 1) =    -3.7522E-18
+  param_fit( 1, 1, 1, 1) =    1.7959E-001
+  param_fit( 1, 1, 2, 1) =    1.0000E+000
+  param_fit( 1, 1, 3, 1) =    2.1180E-017
  
-  param_fit( 2, 1, 1, 1) =     1.4128E+04
-  param_fit( 2, 1, 2, 1) =     1.8360E+03
-  param_fit( 2, 1, 3, 1) =     2.1967E-19
+  param_fit( 2, 1, 1, 1) =    1.4128E+004
+  param_fit( 2, 1, 2, 1) =    1.8360E+003
+  param_fit( 2, 1, 3, 1) =   -1.1571E-020
  
  Sum of all least-squares:    3.3601E-008
  Standard error of the estimate:    7.6378E-007
@@ -83,129 +83,149 @@ Determine fit parameters for hybrid analytic continuation...
 Species   1:
  Integration of fit/analytical function:                 9.9958E-001
  Charge density of fit/analytical function:              9.9958E-001
- Parallel current density of fit/analytical function:   -2.6211E-017
+ Parallel current density of fit/analytical function:   -9.5471E-018
 -=-=-=-=
 Species   2:
  Integration of fit/analytical function:                 9.9958E-001
  Charge density of fit/analytical function:             -9.9958E-001
- Parallel current density of fit/analytical function:   -6.3918E-016
+ Parallel current density of fit/analytical function:   -3.4633E-015
 -=-=-=-=
  Total charge density of fit/analytical function:              4.5757E-007
- Total parallel current density of fit/analytical function:   -6.6539E-016
+ Total parallel current density of fit/analytical function:   -3.4728E-015
 -=-=-=-=-=-=-=-=
 -=-=-=-=-=-=-=-=-
 Broadcasting df0/dp...
  df0/dp received
 Required nMax for species 1 : 21
 Required nMax for species 2 : 13
+Processor   19 of   20 ready. Species    2: n in [  12  13]
+Processor    3 of   20 ready. Species    1: n in [   4   5]
+Processor    5 of   20 ready. Species    1: n in [   8   9]
+Processor    7 of   20 ready. Species    1: n in [  12  13]
+Processor    9 of   20 ready. Species    1: n in [  16  17]
+Processor   11 of   20 ready. Species    1: n in [  20  21]
+Processor   13 of   20 ready. Species    2: n in [   0   1]
+Processor   15 of   20 ready. Species    2: n in [   4   5]
+Processor    1 of   20 ready. Species    1: n in [   0   1]
+Processor   17 of   20 ready. Species    2: n in [   8   9]
 Ideal Number of Processors: 36
 -=-=-=-=-=-=-=-=-=-
+Processor    0 of   20 ready. Species    0: n in [   0   0]
+Processor   18 of   20 ready. Species    2: n in [  10  11]
+Processor    2 of   20 ready. Species    1: n in [   2   3]
+Processor    4 of   20 ready. Species    1: n in [   6   7]
+Processor    6 of   20 ready. Species    1: n in [  10  11]
+Processor    8 of   20 ready. Species    1: n in [  14  15]
+Processor   12 of   20 ready. Species    1: n in [  22  23]
+Processor   14 of   20 ready. Species    2: n in [   2   3]
+Processor   16 of   20 ready. Species    2: n in [   6   7]
+Processor   10 of   20 ready. Species    1: n in [  18  19]
 Starting Secant Method
  Refining Roots:
- Root  1 converged after iteration    4
- D(   9.9881E-003  -2.3132E-007)=    5.0528E-017   4.0383E-018
-   1   9.9881E-003  -2.3132E-007  -1.6295E+001   5.0528E-017   4.0383E-018
+Root 1
+ Converged after iteration    3
+ D(   9.9891E-004   5.7771E-009)=    7.0498E-016  -1.1263E-014
+   1   9.9891E-004   5.7771E-009  -1.3947E+001   7.0498E-016  -1.1263E-014
  => solution/test_kpar_fast.scan_kpara_1.root_1
  => solution/test_kpar_fast.eigen_kpara_1.root_1
  => solution/test_kpar_fast.heat_kpara_1.root_1
- => solution/test_kpar_fast.heat_mech_kpara_1.root_1
-(kperp,kpar)d_ref=    1.0000E-02    1.0746E-02
- Root  1 converged after iteration    6
- D(   1.0733E-002  -3.2872E-007)=   -1.0983E-017   4.8119E-017
-(kperp,kpar)d_ref=    1.0000E-02    1.1548E-02
- Root  1 converged after iteration    6
- D(   1.1534E-002  -4.7051E-007)=    1.6363E-017   6.2832E-017
-(kperp,kpar)d_ref=    1.0000E-02    1.2409E-02
- Root  1 converged after iteration    6
- D(   1.2394E-002  -6.7664E-007)=    3.7524E-017   7.6407E-017
-(kperp,kpar)d_ref=    1.0000E-02    1.3335E-02
- Root  1 converged after iteration    6
- D(   1.3318E-002  -9.7588E-007)=    4.5504E-017   8.7585E-017
-(kperp,kpar)d_ref=    1.0000E-02    1.4330E-02
- Root  1 converged after iteration    6
- D(   1.4310E-002  -1.4096E-006)=    3.1853E-017   9.2840E-017
-(kperp,kpar)d_ref=    1.0000E-02    1.5399E-02
- Root  1 converged after iteration    6
- D(   1.5377E-002  -2.0372E-006)=   -1.0816E-017   8.6344E-017
-(kperp,kpar)d_ref=    1.0000E-02    1.6548E-02
- Root  1 converged after iteration    6
- D(   1.6523E-002  -2.9440E-006)=   -9.4426E-017   6.9613E-017
-(kperp,kpar)d_ref=    1.0000E-02    1.7783E-02
- Root  1 converged after iteration    5
- D(   1.7753E-002  -4.2519E-006)=    4.4563E-018   1.4870E-017
-(kperp,kpar)d_ref=    1.0000E-02    1.9110E-02
- Root  1 converged after iteration    5
- D(   1.9075E-002  -6.1345E-006)=    1.5019E-016  -5.1493E-016
-(kperp,kpar)d_ref=    1.0000E-02    2.0535E-02
- Root  1 converged after iteration    6
- D(   2.0494E-002  -8.8382E-006)=   -8.8440E-019   5.0829E-019
-(kperp,kpar)d_ref=    1.0000E-02    2.2067E-02
- Root  1 converged after iteration    6
- D(   2.2017E-002  -1.2710E-005)=   -9.7660E-018  -3.2168E-018
-(kperp,kpar)d_ref=    1.0000E-02    2.3714E-02
- Root  1 converged after iteration    6
- D(   2.3651E-002  -1.8232E-005)=   -4.3135E-018  -8.9080E-018
-(kperp,kpar)d_ref=    1.0000E-02    2.5483E-02
- Root  1 converged after iteration    6
- D(   2.5404E-002  -2.6066E-005)=   -2.8539E-017   2.4060E-016
-(kperp,kpar)d_ref=    1.0000E-02    2.7384E-02
- Root  1 converged after iteration    7
- D(   2.7282E-002  -3.7089E-005)=   -5.2420E-016   8.0158E-016
-(kperp,kpar)d_ref=    1.0000E-02    2.9427E-02
- Root  1 converged after iteration    8
- D(   2.9294E-002  -5.2416E-005)=    2.5091E-018  -1.3361E-017
-(kperp,kpar)d_ref=    1.0000E-02    3.1623E-02
- Root  1 converged after iteration    8
- D(   3.1446E-002  -7.3340E-005)=    4.6385E-018  -2.4992E-017
-(kperp,kpar)d_ref=    1.0000E-02    3.3982E-02
- Root  1 converged after iteration    8
- D(   3.3745E-002  -1.0112E-004)=   -8.6029E-018   5.1476E-017
-(kperp,kpar)d_ref=    1.0000E-02    3.6517E-02
- Root  1 converged after iteration    8
- D(   3.6197E-002  -1.3646E-004)=   -5.1103E-016   7.1039E-016
-(kperp,kpar)d_ref=    1.0000E-02    3.9242E-02
- Root  1 converged after iteration    9
- D(   3.8806E-002  -1.7870E-004)=    2.5778E-018  -2.3624E-017
-(kperp,kpar)d_ref=    1.0000E-02    4.2170E-02
- Root  1 converged after iteration    8
- D(   4.1579E-002  -2.2497E-004)=   -4.3350E-015  -5.2496E-016
-(kperp,kpar)d_ref=    1.0000E-02    4.5316E-02
- Root  1 converged after iteration    8
- D(   4.4524E-002  -2.7039E-004)=   -3.1190E-015  -1.8859E-015
-(kperp,kpar)d_ref=    1.0000E-02    4.8697E-02
- Root  1 converged after iteration    8
- D(   4.7653E-002  -3.0968E-004)=   -1.0542E-015  -1.2250E-015
-(kperp,kpar)d_ref=    1.0000E-02    5.2330E-02
- Root  1 converged after iteration    9
- D(   5.0982E-002  -3.3948E-004)=   -2.4487E-017   8.2514E-017
-(kperp,kpar)d_ref=    1.0000E-02    5.6234E-02
- Root  1 converged after iteration    8
- D(   5.4525E-002  -3.5780E-004)=    2.1697E-017   1.8673E-016
-(kperp,kpar)d_ref=    1.0000E-02    6.0430E-02
- Root  1 converged after iteration    8
- D(   5.8303E-002  -3.6653E-004)=    3.1149E-017   2.0119E-016
-(kperp,kpar)d_ref=    1.0000E-02    6.4938E-02
- Root  1 converged after iteration    7
- D(   6.2330E-002  -3.6697E-004)=    6.7567E-014   3.8049E-014
-(kperp,kpar)d_ref=    1.0000E-02    6.9783E-02
- Root  1 converged after iteration    7
- D(   6.6623E-002  -3.6104E-004)=    4.7966E-014   3.4842E-014
-(kperp,kpar)d_ref=    1.0000E-02    7.4989E-02
- Root  1 converged after iteration    8
- D(   7.1197E-002  -3.5185E-004)=   -2.0656E-017   1.7821E-016
-(kperp,kpar)d_ref=    1.0000E-02    8.0584E-02
- Root  1 converged after iteration    7
- D(   7.6066E-002  -3.3757E-004)=    1.5858E-014   1.7285E-014
-(kperp,kpar)d_ref=    1.0000E-02    8.6596E-02
- Root  1 converged after iteration    7
- D(   8.1247E-002  -3.2157E-004)=    7.4717E-015   9.1462E-015
-(kperp,kpar)d_ref=    1.0000E-02    9.3057E-02
- Root  1 converged after iteration    7
- D(   8.6752E-002  -3.0437E-004)=    3.4759E-015   5.3931E-015
-(kperp,kpar)d_ref=    1.0000E-02    1.0000E-01
- Root  1 converged after iteration    7
- D(   9.2594E-002  -2.8659E-004)=    2.0719E-015  -1.7356E-014
+kperp:    1.0000E-002 kpar:    1.0746E-003
+ Converged after iteration    5
+ D(   1.0734E-003  -6.4369E-009)=    7.8760E-015   2.1655E-015
+kperp:    1.0000E-002 kpar:    1.1548E-003
+ Converged after iteration    5
+ D(   1.1535E-003   8.0069E-010)=   -1.9320E-015  -7.5226E-015
+kperp:    1.0000E-002 kpar:    1.2409E-003
+ Converged after iteration    5
+ D(   1.2396E-003  -7.3637E-009)=    1.0496E-014   2.8366E-015
+kperp:    1.0000E-002 kpar:    1.3335E-003
+ Converged after iteration    5
+ D(   1.3321E-003   9.0868E-010)=   -2.5896E-015  -9.9408E-015
+kperp:    1.0000E-002 kpar:    1.4330E-003
+ Converged after iteration    5
+ D(   1.4314E-003  -8.3963E-009)=    1.3990E-014   3.6889E-015
+kperp:    1.0000E-002 kpar:    1.5399E-003
+ Converged after iteration    5
+ D(   1.5382E-003   1.0230E-009)=   -3.4760E-015  -1.3096E-014
+kperp:    1.0000E-002 kpar:    1.6548E-003
+ Converged after iteration    5
+ D(   1.6530E-003  -9.5348E-009)=    1.8642E-014   4.7532E-015
+kperp:    1.0000E-002 kpar:    1.7783E-003
+ Converged after iteration    5
+ D(   1.7763E-003   1.1367E-009)=   -4.6735E-015  -1.7180E-014
+kperp:    1.0000E-002 kpar:    1.9110E-003
+ Converged after iteration    5
+ D(   1.9089E-003  -1.0770E-008)=    2.4832E-014   6.0443E-015
+kperp:    1.0000E-002 kpar:    2.0535E-003
+ Converged after iteration    5
+ D(   2.0513E-003   1.2358E-009)=   -6.2956E-015  -2.2411E-014
+kperp:    1.0000E-002 kpar:    2.2067E-003
+ Converged after iteration    5
+ D(   2.2043E-003  -1.2083E-008)=    3.3056E-014   7.5397E-015
+kperp:    1.0000E-002 kpar:    2.3714E-003
+ Converged after iteration    5
+ D(   2.3688E-003   1.2920E-009)=   -8.4967E-015  -2.9008E-014
+kperp:    1.0000E-002 kpar:    2.5483E-003
+ Converged after iteration    5
+ D(   2.5455E-003  -1.3442E-008)=    4.3961E-014   9.1358E-015
+kperp:    1.0000E-002 kpar:    2.7384E-003
+ Converged after iteration    5
+ D(   2.7354E-003   1.2493E-009)=   -1.1485E-014  -3.7149E-014
+kperp:    1.0000E-002 kpar:    2.9427E-003
+ Converged after iteration    5
+ D(   2.9395E-003  -1.4803E-008)=    5.8368E-014   1.0565E-014
+kperp:    1.0000E-002 kpar:    3.1623E-003
+ Converged after iteration    5
+ D(   3.1588E-003   9.9798E-010)=   -1.5530E-014  -4.6870E-014
+kperp:    1.0000E-002 kpar:    3.3982E-003
+ Converged after iteration    5
+ D(   3.3945E-003  -1.6127E-008)=    7.7285E-014   1.1252E-014
+kperp:    1.0000E-002 kpar:    3.6517E-003
+ Converged after iteration    5
+ D(   3.6477E-003   3.2005E-010)=   -2.0957E-014  -5.7894E-014
+kperp:    1.0000E-002 kpar:    3.9242E-003
+ Converged after iteration    6
+ D(   3.9199E-003  -1.5699E-008)=   -1.7991E-015  -5.7842E-015
+kperp:    1.0000E-002 kpar:    4.2170E-003
+ Converged after iteration    5
+ D(   4.2123E-003  -1.2263E-009)=   -3.1197E-014  -8.4515E-014
+kperp:    1.0000E-002 kpar:    4.5316E-003
+ Converged after iteration    5
+ D(   4.5266E-003  -2.5671E-009)=   -3.6983E-014  -9.2630E-014
+kperp:    1.0000E-002 kpar:    4.8697E-003
+ Converged after iteration    6
+ D(   4.8643E-003  -2.2019E-008)=    6.6411E-018   1.4680E-017
+kperp:    1.0000E-002 kpar:    5.2330E-003
+ Converged after iteration    5
+ D(   5.2272E-003  -2.1551E-008)=   -2.1364E-014  -2.0525E-014
+kperp:    1.0000E-002 kpar:    5.6234E-003
+ Converged after iteration    5
+ D(   5.6172E-003  -2.4803E-008)=   -2.5528E-014  -2.4754E-014
+kperp:    1.0000E-002 kpar:    6.0430E-003
+ Converged after iteration    5
+ D(   6.0362E-003  -2.9324E-008)=   -3.0416E-014  -3.0434E-014
+kperp:    1.0000E-002 kpar:    6.4938E-003
+ Converged after iteration    5
+ D(   6.4865E-003  -3.5835E-008)=   -3.7361E-014  -3.7644E-014
+kperp:    1.0000E-002 kpar:    6.9783E-003
+ Converged after iteration    5
+ D(   6.9704E-003  -4.5260E-008)=   -4.6648E-014  -4.7235E-014
+kperp:    1.0000E-002 kpar:    7.4989E-003
+ Converged after iteration    5
+ D(   7.4904E-003  -5.9012E-008)=   -5.9341E-014  -6.0145E-014
+kperp:    1.0000E-002 kpar:    8.0584E-003
+ Converged after iteration    6
+ D(   8.0492E-003  -8.7187E-008)=   -1.6619E-016   1.9815E-015
+kperp:    1.0000E-002 kpar:    8.6596E-003
+ Converged after iteration    6
+ D(   8.6496E-003  -1.1825E-007)=   -7.6606E-017   2.4319E-017
+kperp:    1.0000E-002 kpar:    9.3057E-003
+ Converged after iteration    6
+ D(   9.2948E-003  -1.6390E-007)=   -5.5203E-017   3.5947E-017
+kperp:    1.0000E-002 kpar:    1.0000E-002
+ Converged after iteration    6
+ D(   9.9881E-003  -2.3049E-007)=   -3.0967E-017   4.7543E-017
 Finishing ALPS===================================
 Time:
-2026-09-10 -- 20:36:45
+2024-04-03 -- 11:47:27
 ================================================
