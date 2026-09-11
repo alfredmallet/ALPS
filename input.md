@@ -81,6 +81,7 @@ Size of allowable difference between roots.
 
 **`D_tol`**  
 Tolerance for secant method = 1, rtsec.
+For `secant_method`=2, the iteration also stops when the change between two iterations is below `D_tol` relative to the current value, separately for the real and the imaginary part of the frequency. Set `D_tol`=0 to stop on `D_threshold` only.
 
 **`positions_principal`**  
 Number of parallel momentum steps distant from the resonant momentum

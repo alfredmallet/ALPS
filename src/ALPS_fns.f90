@@ -841,11 +841,15 @@ double complex function integrate(om, nn, mode, iparmin, iparmax)
        resU(om, nn, nperp -1, iparmin) * int_T(nn, nperp -1, iparmin, mode) + &
        resU(om, nn, nperp -1, iparmax) * int_T(nn, nperp -1, iparmax, mode)
 
-  do iperp = 2, nperp-2
-     do ipar = iparmin+1, iparmax-1
+  ! Interior points; iperp is the fast array index and is the innermost loop.
+  do ipar = iparmin+1, iparmax-1
+     do iperp = 2, nperp-2
         integrate = integrate + 4.d0 * resU(om, nn, iperp, ipar) * int_T(nn, iperp, ipar, mode)
      enddo
+  enddo
 
+  ! Edges in ppar:
+  do iperp = 2, nperp-2
      integrate = integrate + &
       2.d0 * ( resU(om, nn, iperp, iparmin) * int_T(nn, iperp, iparmin, mode) + &
       resU(om, nn, iperp, iparmax) * int_T(nn, iperp, iparmax, mode) )
@@ -1261,8 +1265,6 @@ double complex function funct_g(ppar_real,iperp,om,nn,mode)
   integer, intent(in) :: mode
   !! Index of the entries in the T-tensor of Eq. (2.10).
 
-	integer :: ipar
-  !! Index of the parallel momentum.
 
   integer :: ipar_close
   !! Index of the parallel momentum closest to the resonance.
@@ -1282,13 +1284,9 @@ double complex function funct_g(ppar_real,iperp,om,nn,mode)
 
 	dppar  = abs(pp(sproc, 2, 2, 2) - pp(sproc, 2, 1, 2))
 
-	ipar_close=0
-	! determine the closest ipar (on the left) to this p_res_real:
-	do ipar=1,npar-1
-      if (abs(pp(sproc,iperp,ipar,2)-ppar_real) .LE. (0.5d0*dppar)) then
-			ipar_close=ipar
-		endif
-	enddo
+	! Closest ipar to ppar_real on the uniform ppar grid; 0 if ppar_real is outside the grid.
+	ipar_close=nint((ppar_real-pp(sproc,iperp,1,2))/dppar)+1
+	if ((ipar_close.LT.1).OR.(ipar_close.GT.(npar-1))) ipar_close=0
 
 	if (ipar_close.GE.(npar-1)) ipar_close=npar-2
 	if (ipar_close.LE.1) ipar_close=2
@@ -1918,7 +1916,7 @@ end subroutine secant
 
 subroutine secant_osc(om, in)
   !! Secant method with adaptive damping and Newton search fallback.
-  use ALPS_var, only : numiter, D_threshold, ierror, proc0, writeOut, D_prec
+  use ALPS_var, only : numiter, D_threshold, ierror, proc0, writeOut, D_prec, D_tol
   use mpi
   implicit none
 
@@ -2021,7 +2019,12 @@ subroutine secant_osc(om, in)
     endif
 
     !! Check convergence
-    if ((abs(D) .LT. D_threshold)) then
+    ! Converged if |D| < D_threshold, or if the last step in both the real and the
+    ! imaginary part of om is below D_tol relative to that part.
+    if ((abs(D) .LT. D_threshold) .OR. &
+        ((iter .GT. 1) .AND. &
+         (abs(real(om) - real(prevom)) .LE. D_tol * abs(real(om))) .AND. &
+         (abs(aimag(om) - aimag(prevom)) .LE. D_tol * abs(aimag(om))))) then
       jump = 0.d0
       go_for_secant = .FALSE.
       if (proc0 .AND. writeOut) then

@@ -1,7 +1,8 @@
 AUTOMAKE_OPTIONS = subdir-objects
 
 # Fortran Compiler and Flags
-AM_FCFLAGS = -O4 -fbounds-check -ffpe-trap=zero,overflow -Wunused -funroll-loops -g -fbacktrace 
+AM_FCFLAGS = -O3 -march=native -funroll-loops -g -fbacktrace -Wunused
+# Debug flags: -fbounds-check -ffpe-trap=zero,overflow
 
 # Linker Libraries
 ALPS_LDADD = -lm $(LAPACK_LIBS) $(BLAS_LIBS)
