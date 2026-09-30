@@ -3601,6 +3601,7 @@ subroutine map_search
   use ALPS_var, only : omi, omf, gami, gamf, loggridw, loggridg, determine_minima
   use ALPS_var, only : ni, nr, proc0, ms, ns, qs, runname, nspec
   use ALPS_var, only : writeOut, kperp, kpar, wroots, numroots, nroots, nroots_max
+  use ALPS_var, only : chi0
   use ALPS_io,  only : get_unused_unit
   use mpi
   implicit none
@@ -3650,6 +3651,12 @@ subroutine map_search
   integer :: unit_map
   !! Unit for map output.
 
+  character(500) :: chiName
+  !! File name for the per-species susceptibility on the map.
+
+  integer :: unit_chi
+  !! Unit for susceptibility output.
+
   double precision :: tmp
   !! Storage variable for determinant of dispersion tensor.
 
@@ -3694,6 +3701,11 @@ subroutine map_search
      call get_unused_unit(unit_map)
      open(unit=unit_map,file=trim(mapName),status='replace')
      close(unit_map)
+     ! chi0 per species at each map point, so an external solver can be checked against it.
+     write(chiName,'(3a)') 'solution/',trim(runname),'.chi0'
+     call get_unused_unit(unit_chi)
+     open(unit=unit_chi,file=trim(chiName),status='replace')
+     close(unit_chi)
   endif
 
   ! Scan over complex frequency space and calculate dispersion relation:
@@ -3720,6 +3732,16 @@ subroutine map_search
         omega=cmplx(wr,wi,kind(1.d0))
         om(ir,ii)=omega
         cal(ir,ii)=disp(omega)
+        if (proc0) then
+           open(unit=unit_chi,file=trim(chiName),status='old',position='append')
+           write(unit_chi,'(2es24.15e3)',advance='no') omega
+           do is = 1, nspec
+              write(unit_chi,'(12es24.15e3)',advance='no') chi0(is,1,1),chi0(is,2,2),chi0(is,3,3), &
+                   chi0(is,1,2),chi0(is,1,3),chi0(is,2,3)
+           enddo
+           write(unit_chi,*)
+           close(unit_chi)
+        endif
         !!check
         !if (proc0.and.writeOut)&
         !     write(*,'(4es13.6)')omega,cal(ir,ii)
