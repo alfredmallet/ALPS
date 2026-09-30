@@ -1591,7 +1591,8 @@ DOUBLE PRECISION FUNCTION BESSJ (N,X)
       double precision, intent(in) :: X
       !! Argument of the Bessel function.
 
-      INTEGER, PARAMETER :: IACC = 40
+      ! Miller starts at N + sqrt(IACC*N). NR's 40 is 2e-7 off at X ~ N for small N; 100 reaches rounding, 200 is margin.
+      INTEGER, PARAMETER :: IACC = 200
       REAL*8, PARAMETER :: BIGNO = 1.D10, BIGNI = 1.D-10
       INTEGER M, J, JSUM
       REAL *8 TOX,BJM,BJ,BJP,SUM
@@ -1681,10 +1682,10 @@ DOUBLE PRECISION FUNCTION BESSJ0 (X)
       ELSE
       Z = 8.D0/AX
       Y = Z*Z
-      XX = AX-.785398164D0
+      XX = AX-0.785398163397448D0
       FP = P1+Y*(P2+Y*(P3+Y*(P4+Y*P5)))
       FQ = Q1+Y*(Q2+Y*(Q3+Y*(Q4+Y*Q5)))
-      BESSJ0 = SQRT(.636619772D0/AX)*(FP*COS(XX)-Z*FQ*SIN(XX))
+      BESSJ0 = SQRT(0.636619772367581D0/AX)*(FP*COS(XX)-Z*FQ*SIN(XX))
       ENDIF
       RETURN
 1     BESSJ0 = 1.D0
@@ -1709,7 +1710,7 @@ double precision FUNCTION BESSJ1 (X)
       REAL *8 Y,P1,P2,P3,P4,P5,P6,R1,R2,R3,R4,R5,R6  &
                ,Q1,Q2,Q3,Q4,Q5,S1,S2,S3,S4,S5,S6
       DATA P1,P2,P3,P4,P5 /1.D0,.183105D-2,-.3516396496D-4,  &
-      .2457520174D-5,-.240337019D-6 /,P6 /.636619772D0 /
+      .2457520174D-5,-.240337019D-6 /,P6 /0.636619772367581D0 /
       DATA Q1,Q2,Q3,Q4,Q5 /.04687499995D0,-.2002690873D-3,   &
       .8449199096D-5,-.88228987D-6,.105787412D-6 /
       DATA R1,R2,R3,R4,R5,R6 /72362614232.D0,-7895059235.D0, &
@@ -1726,7 +1727,7 @@ double precision FUNCTION BESSJ1 (X)
       ELSE
       Z = 8./AX
       Y = Z*Z
-      XX = AX-2.35619491
+      XX = AX-2.356194490192345D0
       FP = P1+Y*(P2+Y*(P3+Y*(P4+Y*P5)))
       FQ = Q1+Y*(Q2+Y*(Q3+Y*(Q4+Y*Q5)))
       BESSJ1 = SQRT(P6/AX)*(COS(XX)*FP-Z*SIN(XX)*FQ)*SIGN(S6,X)
